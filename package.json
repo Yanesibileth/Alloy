@@ -1,0 +1,50 @@
+{
+  "name": "scout-companion",
+  "version": "1.0.0",
+  "description": "Scout — AI Minecraft Companion for kids",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --win --x64"
+  },
+  "devDependencies": {
+    "dotenv": "^16.4.5",
+    "electron": "^28.3.3",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.scout.companion",
+    "productName": "Scout",
+    "copyright": "Copyright 2025 Scout",
+    "asar": false,
+    "directories": {
+      "output": "dist",
+      "buildResources": "assets"
+    },
+    "files": [
+      "main.js",
+      "assets/**/*",
+      "backend/server.js",
+      "backend/dashboard.html",
+      "backend/.env.example",
+      "backend/node_modules/**/*",
+      "backend/package.json"
+    ],
+    "win": {
+      "target": [
+        { "target": "nsis", "arch": ["x64"] }
+      ],
+      "icon": "assets/icon.ico"
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": false,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "runAfterFinish": true,
+      "installerIcon": "assets/icon.ico",
+      "uninstallerIcon": "assets/icon.ico"
+    }
+  }
+}
